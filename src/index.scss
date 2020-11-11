@@ -1,8 +1,13 @@
 @import './Style/Reset/Reset.scss';
 
+@import './Style/Container.scss';
 @import './Style/Navigation.scss';
-// @import '../Style/Book';
+@import './Style/Content.scss';
+@import './Style/Book.scss';
 // @import '../Style/Information';
 // @import '../Style/Service';
 // @import '../Style/Galery';
 // @import '../Style/Contact';
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');

@@ -1,5 +1,151 @@
 .navigation {
-    width: 800px;
-    height: 100px;
-    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 500px) {
+        padding: 1rem;
+    }
+    @media (min-width: 501px) AND (max-width: 700px){
+        padding: 50px;
+    }
+    @media (min-width: 701px) AND (max-width: 1100px) {
+        width: 90vw;
+        padding: 50px;
+    }
+
+    @media (min-width: 1101px) AND (max-width: 1300px) {
+        margin: 0 auto;
+        padding: 50px;
+        width: 80vw;
+    }
+    @media (min-width: 1301px) {
+        margin: 0 auto;
+        padding: 50px;
+        width: 60vw;
+    }
+
+    h1 {
+        color: white;
+        font-family: 'Dancing Script', cursive;
+
+        @media (max-width: 500px){
+            font-size: 2rem;
+        }
+
+        @media (min-width: 501px) {
+            font-size: 3rem;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+    }
+
+    &__image {
+        color: white;
+
+        @media (max-width: 500px){
+            width: 3rem;
+            padding-right: 10px;
+        }
+
+        @media (min-width: 501px) {
+            width: 4rem;
+            padding-right: 20px;
+        }
+    }
+    
+    &__hamburger {
+        padding: 10px;
+        display: inline-block;
+        cursor: pointer;
+        background-color: transparent;
+        border: 0;
+        margin: 0;
+    }
+
+    &__hamburger-box {
+        width: 35px;
+        height: 24px;
+        display: inline-block;
+        position: relative;
+    }
+
+    @mixin hamburger-line {
+        width: 100%;
+        height: 3px;
+        background-color: #FFFFFF;
+        position: absolute;
+      }
+      
+    &__hamburger-inner {
+        @include hamburger-line;
+        
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: background-color .1s .2s ease-in-out;
+      }
+
+    &__hamburger-inner::before,
+    &__hamburger-inner::after {
+        @include hamburger-line;
+        
+        content: '';
+        left: 0;
+        transition: transform .2s .2s ease-in-out;
+      } 
+
+    &__hamburger-inner::before {
+        top: -10px;
+      }
+      
+    &__hamburger-inner::after {
+        top: 10px;
+      }
+
+      .hamburger--active &__hamburger-inner {
+        background-color: transparent;
+      }
+      
+      .hamburger--active &__hamburger-inner:before {
+        transform: translateY(10px) rotate(45deg);
+      }
+      
+      .hamburger--active &__hamburger-inner:after {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+
+    &__menu {
+        display: flex;
+        align-items: center;
+        @media (max-width: 801px) {
+            display: none;
+        }
+        
+
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li {
+            padding: 15px 20px;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        li:hover {
+            background-color: #fec74e;
+            color: white;
+            cursor: pointer;
+        }
+    }
+}
+
+.navigation__hamburger {
+    @media (min-width: 801px) {
+        display: none;
+    }
 }
