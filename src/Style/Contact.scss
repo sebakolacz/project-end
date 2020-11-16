@@ -1,0 +1,53 @@
+.contact {
+    background-color: #112327;
+    color: white;
+
+    &__information {
+        text-align: center;
+        border-bottom: 4px solid #fec74e;
+        width: 60vw;
+        margin: 0 auto;
+        @media (max-width: 792px) {
+            width: 90vw;
+        }
+        h1 {
+            font-size: 72px;
+            padding: 50px 0 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        h2 {
+            font-size: 30px;
+            padding-bottom: 30px;
+        }
+        h3 {
+            padding: 20px 0 10px;
+        }
+        h4 {
+            padding: 10px 0 40px;
+        }
+    }
+
+    &__newsletter {
+        display: flex;
+        justify-content: center;
+        padding: 50px 0;
+        margin: 0 auto;
+        h1 {
+            font-size: 30px;
+            padding-right: 20px;
+
+            @media (max-width: 500px) {
+                font-size: 20px;
+                padding-right: 0;
+            }
+        }
+        button {
+            width: 40px;
+            background:  transparent;
+            border: transparent;
+            img {
+                color: white;
+            }
+        }
+    }
+}
