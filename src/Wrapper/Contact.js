@@ -1,22 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import arrow from '../Assets/arrow.svg';
 import { db } from "../firebase";
  
-const Contact = () => {
+class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
 
-  const email = getElementByClass("email");
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  db.collection("newsletter").set({email: email.value})
-  
-.then(function() {
-    console.log("Document successfully written!");
-})
-.catch(function(error) {
-    console.error("Error writing document: ", error);
-});
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
 
-  return (
-    <div className="contact">
+  handleSubmit(e) {
+    e.preventDefault();
+    db.collection("newsletter").add({ email: this.state.value });
+    this.setState({
+      value: ''
+    });
+  }
+
+
+  render() {
+    return (
+      <div className="contact">
 
         <div className="contact__information">
             <h1>Kasprowy</h1>
@@ -27,12 +37,16 @@ const Contact = () => {
 
         <div className="contact__newsletter">
             <h1>Newsletter:</h1> 
-            <input className="email" type="text" placeholder="Podaj adres e-mail" />
-            <button><img src={arrow} /></button>
+              <form onSubmit={this.handleSubmit}>
+                  <input type="text" placeholder="Podaj adres e-mail" value={this.state.value} onChange={this.handleChange} />
+                <button><img src={arrow} type="submit" value="Wyślij" /></button>
+            </form>
         </div>
 
     </div>
-  );
+    );
+  }
 }
+
 
 export default Contact;
