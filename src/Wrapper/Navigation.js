@@ -6,12 +6,12 @@ const Navigation = () => {
 const [opened, setOpened] = React.useState(false);
 
     return (
-        <div className="navigation">
+        <header className="navigation">
           <div className="navigation__logo">
             <div className="navigation__image"><img src={logo} /></div>
             <div className="navigation__name"><h1>Kasprowy</h1></div>
           </div>
-          <div className={`navigation__menu ${(opened) ? "navigation--active" : ""}`}>
+          <nav className={`navigation__menu ${(opened) ? "navigation--active" : ""}`}>
             <div className="navigation__list">
               <ul className="navigation__ul">
                 <li><a href="#"></a>HOME</li>
@@ -20,13 +20,13 @@ const [opened, setOpened] = React.useState(false);
                 <li><a href="#"></a>CONTACT</li>
               </ul>
             </div>
-          </div>
+          </nav>
           <button onClick={() => setOpened(opened => !opened)} className={`navigation--active ${(opened) ? "hamburger--active" : ""}`}>
             <span className="navigation__hamburger-box">
               <span className="navigation__hamburger-inner"></span>
             </span>
           </button>
-        </div>
+        </header>
      );
     }
 

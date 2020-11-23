@@ -26,7 +26,7 @@ class Contact extends React.Component {
 
   render() {
     return (
-      <div className="contact">
+      <footer className="contact">
 
         <div className="contact__information">
             <h1>Kasprowy</h1>
@@ -43,7 +43,7 @@ class Contact extends React.Component {
             </form>
         </div>
 
-    </div>
+    </footer>
     );
   }
 }

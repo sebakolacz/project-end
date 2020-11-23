@@ -7,21 +7,13 @@ import { db } from "../firebase";
 
 function App() {
   
-  const [value, onChange] = useState(new Date(2020, 10, 18));
+  const [value, onChange] = useState(new Date(2020, 10, 19));
   const [number, setNumber] = useState(1);
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const selectRange = (props) => true;
-  const showDoubleView = (props) => true;
-
-  
-  const handleChange = (e) => {
-    this.setState({value: e.target.value})
-  };
-
 
   const numberValue = (e) => {
     setNumber(e);
@@ -45,17 +37,25 @@ function App() {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    db.collection("dane").add({ termin: value, liczba: number, name: name, surname: surname, address: address, phone: phone, email: email })
+    db.collection("dane").add({ date: value, number: number, name: name, surname: surname, address: address, phone: phone, email: email });
   };
+
+
+  const d1 = value[0];
+  const d2 = value[1];
+  const diff = Math.floor((d2-d1)/864e5 + 1);
+  const price = 50;
+  const numberOfGuests = number;
+  const total = price * diff * numberOfGuests || 0;
+  const text = "Suma do zapłaty: "+ total + '$';
 
   return (
     <div className="app">
       <div className="app__calendar">
         <Calendar
           onChange={onChange}
-          value={value}
+          defaultValue={value}
           selectRange
-          showDoubleView
         />
       </div>
       <div className="app__form">
@@ -65,10 +65,12 @@ function App() {
           <input id="surname" placeholder="Surname" type="text" value={surname} onChange={(e) => surnameValue(e.target.value)} />
           <input id="address" placeholder="Address" type="text" value={address} onChange={(e) => addressValue(e.target.value)} />
           <input id="phone" placeholder="Phone" type="number" value={phone} onChange={(e) => phoneValue(e.target.value)} />
-          <input id="email" placeholder="Email" type="text" value={email} onChange={(e) => emailValue(e.target.value)} />
+          <input id="email" placeholder="E-mail" type="text" value={email} onChange={(e) => emailValue(e.target.value)} />
           <button><img src={arrow} type="submit" value="Wyślij" /></button>
+          <div className="app__calculator" >{text}</div>
         </form>
       </div>
+      
     </div>
   );
 }
