@@ -1,9 +1,8 @@
 import React from 'react';
 import logo from "../Assets/logo.svg";
+import { Link } from 'react-scroll';
 
 const Navigation = () => {
-  
-const [opened, setOpened] = React.useState(false);
 
     return (
         <header className="navigation">
@@ -11,21 +10,16 @@ const [opened, setOpened] = React.useState(false);
             <div className="navigation__image"><img src={logo} /></div>
             <div className="navigation__name"><h1>Kasprowy</h1></div>
           </div>
-          <nav className={`navigation__menu ${(opened) ? "navigation--active" : ""}`}>
+          <nav className="navigation__menu">
             <div className="navigation__list">
               <ul className="navigation__ul">
-                <li><a href="#"></a>HOME</li>
-                <li><a href="#"></a>ABOUT</li>
-                <li><a href="#"></a>SERVICES</li>
-                <li><a href="#"></a>CONTACT</li>
+                <li>HOME</li>
+                <Link to="information__container" smooth={true} duration={900}><li>ABOUT</li></Link>
+                <Link to="service" smooth={true} duration={900}><li>SERVICES</li></Link>
+                <Link to="contact" smooth={true} duration={900}><li>CONTACT</li></Link>
               </ul>
             </div>
           </nav>
-          <button onClick={() => setOpened(opened => !opened)} className={`navigation--active ${(opened) ? "hamburger--active" : ""}`}>
-            <span className="navigation__hamburger-box">
-              <span className="navigation__hamburger-inner"></span>
-            </span>
-          </button>
         </header>
      );
     }
